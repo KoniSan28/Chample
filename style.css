@@ -1,0 +1,117 @@
+* {
+    font-size: 20px;
+    font-family: "meiryo";
+    line-height: 24px;
+    outline: none;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+#msg_out {
+    height: calc(100vh - 102px);
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.msg_block {
+    width: calc(100vw - 40px);
+    display: inline-block;
+}
+.my_msg, .your_msg {
+    position: relative;
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 7px 10px;
+    min-height: 44px;
+    min-width: 44px;
+    max-width: 600px;
+    color: #000;
+    background: #FFF;
+    border: solid 3px #000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.my_msg:before, .your_msg:before {
+    content: "";
+    position: absolute;
+    top: 19px;
+    margin-top: -12px;
+    border: 12px solid transparent;
+    z-index: 2;
+}
+.my_msg:after, .your_msg:after {
+    content: "";
+    position: absolute;
+    top: 19px;
+    margin-top: -14px;
+    border: 14px solid transparent;
+    z-index: 1;
+}
+@media screen and (max-width: 670px) {
+    .my_msg, .your_msg {
+        max-width: calc(100vw - 70px);
+    }
+}
+.my_msg {
+    float: right;
+}
+.my_msg:before {
+    right: -22px;
+    border-left: 12px solid #FFF;
+}
+.my_msg:after {
+    right: -28px;
+    border-left: 14px solid #000;
+}
+.your_msg {
+    float: left;
+}
+.your_msg:before {
+    left: -22px;
+    border-right: 12px solid #FFF;
+}
+.your_msg:after {
+    left: -28px;
+    border-right: 14px solid #000;
+}
+hr {
+    margin: 0;
+}
+form {
+    height: 100px;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 0;
+}
+input {
+    height: 40px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 3px solid #000;
+    border-radius: 20px;
+    margin: 10px;
+}
+input[type=text] {
+    width: calc(100vw - 280px);
+}
+input[type=submit] {
+    width: 200px;
+    background: #aaa;
+    color: #000;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background: #fff;
+    color: #000;
+}
+input[type=submit]:active {
+    background: #000;
+    color: #fff;
+}
