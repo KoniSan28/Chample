@@ -9,10 +9,10 @@
     </head>
     <body>
         <div id="msg_out"></div>
-        <form action="" method="post" onsubmit="return false;">
-            <input type="text" id="msg_in">
-            <input type="submit" onclick="sendMyMessage();" value="送信">
-        </form>
+        <div id="msg_form">
+            <textarea id="msg_in"></textarea>
+            <button id="msg_button">送信</button>
+        </div>
         </div>
         <script src="./socket.io/socket.io.js"></script>
         <script src="./anime.min.js"></script>
