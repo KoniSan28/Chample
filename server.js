@@ -21,6 +21,12 @@ var server = http.createServer((req,res)=>{
                 res.end(data,"utf-8");
             });
             break;
+        case "ico":                                                          //拡張子がcssならContent-Typeをtext/cssにする
+            fs.readFile(path, (err,data)=>{
+                res.writeHead(200,{"Content-Type":"image/ico"});
+                res.end(data);
+            });
+            break;
         case "/":                                                           //拡張子が/(index.html)だった場合はindex.htmlを返す
             fs.readFile("./index.html", (err,data)=>{
                 res.writeHead(200,{"Content-Type":"text/html"});
