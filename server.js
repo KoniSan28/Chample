@@ -1,6 +1,7 @@
 var http = require("http");
 var socketio = require("socket.io");
 var fs = require("fs");
+var os = require("os");
  
 var server = http.createServer((req,res)=>{
     var url = req.url;                                                      //リクエストからURLを取得
@@ -30,6 +31,19 @@ var server = http.createServer((req,res)=>{
 }).listen(3000);
 
 console.log("server is running.");
+
+//IPアドレス取得
+var ip;
+var interfaces = os.networkInterfaces();
+for (key in interfaces) {
+    interfaces[key].forEach((value)=>{
+        if (value.family == "IPv4" && value.internal == false) {
+            ip = value.address;
+        }
+    });
+}
+
+console.log("http://"+ip+":3000/");
  
 var io = socketio.listen(server);
  
