@@ -1,4 +1,4 @@
-var s = io.connect("http://localhost:3000");                        //ローカル
+var s = io.connect();                                               //サーバーと接続
 var msg_in = document.getElementById("msg_in");                     //メッセージの入力欄
 var msg_out = document.getElementById("msg_out");                   //メッセージの出力欄
 
@@ -34,12 +34,13 @@ function sendBroadcast() {
 function addMessage(value,who) {
     var bottom_scroll = msg_out.scrollHeight-msg_out.clientHeight-msg_out.scrollTop;
     var msg_block = document.createElement("div");
-    msg_block.className = "msg_block";
     var msg = document.createElement("div");
-    if (who == 0) {                                                 //相手からのメッセージ
-        msg.className = "my_msg";
-    } else {                                                        //自分からのメッセージ
-        msg.className = "your_msg";
+    if (who == 0) {                                                 //自分からのメッセージ
+        msg_block.className = "msg_block right";
+        msg.className = "msg right";
+    } else {                                                        //相手からのメッセージ
+        msg_block.className = "msg_block left";
+        msg.className = "msg left";
     }
     msg.innerText = value;
     msg_block.appendChild(msg);

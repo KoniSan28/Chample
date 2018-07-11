@@ -4,30 +4,43 @@
     line-height: 24px;
     outline: none;
 }
+html {
+    height: 100%;
+    width: 100%;
+}
 body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     overflow: hidden;
 }
 #msg_out {
-    height: calc(100vh - 102px);
+    height: calc(100% - 70px);
     width: 100vw;
     box-sizing: border-box;
     padding: 20px;
     padding-bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    background: #aaa;
 }
 .msg_block {
     width: calc(100vw - 40px);
     display: inline-block;
 }
-.my_msg, .your_msg {
+.msg_block.left {
+    text-align: left;
+}
+.msg_block.right {
+    text-align: right;
+}
+.msg {
     position: relative;
     display: inline-block;
     margin: 10px 15px;
-    padding: 7px 10px;
+    padding: 7px;
     min-height: 44px;
-    min-width: 44px;
+    min-width: 20px;
     max-width: 600px;
     color: #000;
     background: #FFF;
@@ -37,82 +50,75 @@ body {
     white-space: normal;
     word-wrap: break-word;
 }
-.my_msg:before, .your_msg:before {
+.msg:before {
     content: "";
     position: absolute;
     top: 19px;
-    margin-top: -12px;
-    border: 12px solid transparent;
+    margin-top: -8px;
+    border-width: 8px 12px;
+    border-style: solid;
     z-index: 2;
 }
-.my_msg:after, .your_msg:after {
+.msg:after {
     content: "";
     position: absolute;
     top: 19px;
-    margin-top: -14px;
-    border: 14px solid transparent;
+    margin-top: -10px;
+    border-width: 10px 14px;
+    border-style: solid;
     z-index: 1;
 }
-@media screen and (max-width: 670px) {
-    .my_msg, .your_msg {
-        max-width: calc(100vw - 70px);
-    }
-}
-.my_msg {
-    float: right;
-}
-.my_msg:before {
-    right: -22px;
-    border-left: 12px solid #FFF;
-}
-.my_msg:after {
-    right: -28px;
-    border-left: 14px solid #000;
-}
-.your_msg {
-    float: left;
-}
-.your_msg:before {
+.msg.left:before {
     left: -22px;
-    border-right: 12px solid #FFF;
+    border-color: transparent #fff transparent transparent;
 }
-.your_msg:after {
+.msg.left:after {
     left: -28px;
-    border-right: 14px solid #000;
+    border-color: transparent #000 transparent transparent;
 }
-hr {
-    margin: 0;
+.msg.right:before {
+    right: -22px;
+    border-color: transparent transparent transparent #fff;
+}
+.msg.right:after {
+    right: -28px;
+    border-color: transparent transparent transparent #000;
 }
 form {
-    height: 100px;
+    height: 70px;
     width: 100vw;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     font-size: 0;
 }
 input {
     height: 40px;
     box-sizing: border-box;
-    padding: 5px 17px;
+    padding: 5px 10px;
     border: 3px solid #000;
     border-radius: 20px;
-    margin: 10px;
+    margin: 0;
+    display: inline-block;
 }
 input[type=text] {
-    width: calc(100vw - 160px);
+    width: calc(100vw - 130px);
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    margin-right: 0;
+    vertical-align: top;
 }
 input[type=submit] {
     width: 100px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    margin-left: 0;
+    vertical-align: top;
     background: #aaa;
     color: #000;
     cursor: pointer;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 input[type=submit]:hover {
     background: #fff;
@@ -121,4 +127,73 @@ input[type=submit]:hover {
 input[type=submit]:active {
     background: #000;
     color: #fff;
+}
+@media screen and (max-width: 670px) {
+    .msg {
+        max-width: calc(100vw - 70px);
+    }
+}
+@media screen and (max-width: 480px) {
+    * {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    #msg_out {
+        height: calc(100% - 44px);
+        padding: 10px;
+    }
+    .msg_block {
+        width: calc(100vw - 20px);
+    }
+    .msg {
+        margin: 5px 15px;
+        padding: 5px;
+        min-height: 34px;
+        max-width: 250px;
+        border-width: 2px;
+    }
+    .msg:before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        margin-top: -8px;
+        border: solid transparent;
+        border-width: 8px 12px;
+        z-index: 2;
+    }
+    .msg:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        margin-top: -9px;
+        border: solid transparent;
+        border-width: 9px 13px;
+        z-index: 1;
+    }
+    .msg.left:after {
+        left: -26px;
+    }
+    .msg.right:after {
+        right: -26px;
+    }
+    form {
+        height: 44px;
+        padding: 5px;
+    }
+    input {
+        height: 34px;
+        border-width: 2px;
+        border-radius: 17px;
+    }
+    input[type=text] {
+        width: calc(100vw - 80px);
+    }
+    input[type=submit] {
+        width: 70px;
+    }
+}
+@media screen and (max-width: 300px) {
+    .msg {
+        max-width: calc(100vw - 50px);
+    }
 }
