@@ -1,6 +1,6 @@
 {
   "name": "chample",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "socket.ioとnode.jsによって作られたシンプルなチャットアプリ",
   "main": "server.js",
   "dependencies": {
