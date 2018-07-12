@@ -49,27 +49,38 @@ function addMessage(value,who) {
 
 //改行に合わせてmsg_formをリサイズ
 function nlResize() {
-    var nl_num = msg_in.value.split("\n").length - 1;               //改行の個数
-    if (nl_num <= 5 && document.body.clientWidth > 480) {
+    msg_out.style.height = null;
+    msg_form.style.height = null;
+    msg_in.style.height = null;
+    msg_button.style.height = null;
+
+    //改行の個数
+    if (document.body.clientWidth > 480) {
+        var nl_num = (msg_in.scrollHeight - 10) / 24 - 1;
+    } else {
+        var nl_num = (msg_in.scrollHeight - 10) / 20 - 1;
+    }
+    
+    if (nl_num < 5 && document.body.clientWidth > 480) {
         msg_out.style.height = "calc(100% - " + String(70 + 24 * nl_num) + "px)";
         msg_form.style.height = String(70 + 24 * nl_num) + "px";
         msg_in.style.height = String(40 + 24 * nl_num) + "px";
         msg_button.style.height = String(40 + 24 * nl_num) + "px";
-    } else if (nl_num <= 5) {
+    } else if (nl_num < 5) {
         msg_out.style.height = "calc(100% - " + String(44 + 20 * nl_num) + "px)";
         msg_form.style.height = String(44 + 20 * nl_num) + "px";
         msg_in.style.height = String(34 + 20 * nl_num) + "px";
         msg_button.style.height = String(34 + 20 * nl_num) + "px";
     } else if (document.body.clientWidth > 480) {
-        msg_out.style.height = "calc(100% - 190px)";
-        msg_form.style.height = "190px";
-        msg_in.style.height = "160px";
-        msg_button.style.height = "160px";
+        msg_out.style.height = "calc(100% - 166px)";
+        msg_form.style.height = "166px";
+        msg_in.style.height = "136px";
+        msg_button.style.height = "136px";
     } else {
-        msg_out.style.height = "calc(100% - 144px)";
-        msg_form.style.height = "144px";
-        msg_in.style.height = "134px";
-        msg_button.style.height = "134px";
+        msg_out.style.height = "calc(100% - 124px)";
+        msg_form.style.height = "124px";
+        msg_in.style.height = "114px";
+        msg_button.style.height = "114px";
     }
 }
 
